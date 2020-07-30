@@ -1,8 +1,7 @@
 const mongoose = require('mongoose')
-const validator = require('validator')
 const bcrypt = require('bcrypt')
 
-const userShema = new mongoose.Schema({
+const studSchema = new mongoose.Schema({
     name : {
         type : String,
         required : true,
@@ -12,8 +11,9 @@ const userShema = new mongoose.Schema({
     registrationId : {
         type : String,
         trim : true,
-        // required : true,
-        default : 'TVE17CS001'
+        required : true, 
+        unique : true
+       // default : 'TVE17CS001'
     },
 
     dept : {
@@ -27,10 +27,16 @@ const userShema = new mongoose.Schema({
         required : true,
         trim : true,
         minlength : 8
+    },
+
+    projects : {
+        type : {type: String},
+		value : [String]
+    }
 })
 
 
-userSchema.pre('save',async function(next){
+studSchema.pre('save',async function(next){
     const user = this
   
     if(user.isModified('password')){
@@ -42,8 +48,8 @@ userSchema.pre('save',async function(next){
   
   
   
-const user = mongoose.model('user',userSchema)
+const student = mongoose.model('student',studSchema)
   
   
   
-module.exports = user
+module.exports = student
