@@ -16,6 +16,10 @@ router.get('/student/:id',async(req,res)=>{
     controller.findOne(req,res)
 })
 
+router.patch('/student/:id',(req,res)=>{
+    controller.modify(req,res)
+})
+
 router.delete('/student/:id',async(req,res)=>{
     controller.deleteOne(req,res)
 })

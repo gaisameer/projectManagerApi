@@ -50,9 +50,36 @@ const deleteOne = async(req,res) =>{
     }
 }
 
+const modify = async(req,res)=>{
+    const allowed = ['name','registrationId','dept','password','projects']
+    const updates = Object.keys(req.body)
+    const isValid = updates.every((update)=>{
+        return allowed.includes(update)
+    })
+
+    if(!isValid){
+        return res.status(400).send({error : 'invalid updates'})
+    }
+    try{
+        const stud = await Student.findById(req.params.id)
+        updates.forEach((update)=>{
+            stud[update] = req.body[updates]
+        })
+
+        if(!stud){
+            return res.status(404).send()
+        }
+        await stud.save()
+        res.send(stud)
+    }catch(e){
+        res.status(400).send()
+    }
+}
+
 module.exports = {
     addStud : addStud,
     readAll : readAll,
     findOne : findOne,
-    deleteOne : deleteOne
+    deleteOne : deleteOne,
+    modify : modify
 }
