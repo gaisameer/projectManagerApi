@@ -18,7 +18,7 @@ const projectSchema = new mongoose.Schema({
     members : {
         type : {type: String},
         value : [String],
-        required : true
+       // required : true
     },
 
     guide : {

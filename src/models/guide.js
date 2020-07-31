@@ -1,19 +1,11 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
-const studSchema = new mongoose.Schema({
+const guideSchema = new mongoose.Schema({
     name : {
         type : String,
         required : true,
         trim : true
-    },
-
-    registrationId : {
-        type : String,
-        trim : true,
-        required : true, 
-        unique : true
-       // default : 'TVE17CS001'
     },
 
     dept : {
@@ -36,7 +28,7 @@ const studSchema = new mongoose.Schema({
 })
 
 
-studSchema.pre('save',async function(next){
+guideSchema.pre('save',async function(next){
     const user = this
   
     if(user.isModified('password')){
@@ -48,8 +40,8 @@ studSchema.pre('save',async function(next){
   
   
   
-const student = mongoose.model('student',studSchema)
+const guide = mongoose.model('guide',guideSchema)
   
   
   
-module.exports = student
+module.exports = guide
