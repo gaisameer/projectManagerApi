@@ -25,7 +25,34 @@ const readAll = async(req,res) => {
     }
 }
 
+const findOne = async(req,res) => {
+    try{
+        const stud = await Student.findById(req.params.id)
+        if(!stud)
+            return res.status(404).send()
+        res.send(stud)
+    }catch(e){
+        console.log(e)
+        res.status(500).send()
+
+    }
+}
+
+const deleteOne = async(req,res) =>{
+    try{
+        const stud =await Student.findByIdAndDelete(req.params.id)
+        if(!stud)
+            return res.status(404).send()
+        res.send(stud)
+    }catch(e){
+        console.log(e)
+        res.status(500).send()
+    }
+}
+
 module.exports = {
     addStud : addStud,
-    readAll : readAll
+    readAll : readAll,
+    findOne : findOne,
+    deleteOne : deleteOne
 }

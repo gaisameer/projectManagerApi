@@ -1,5 +1,5 @@
 const express = require('express')
-const studRouter = require('./routers/studentRoter')
+const studRouter = require('./routers/studentRouter')
 const guideRouter = require('./routers/guideRouter')
 const projRouter = require('./routers/projectRouter')
 const logRouter = require('./routers/logRouter')

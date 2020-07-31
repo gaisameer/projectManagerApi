@@ -12,5 +12,13 @@ router.post('/student',async(req,res)=>{
     controller.addStud(req,res)
 })
 
+router.get('/student/:id',async(req,res)=>{
+    controller.findOne(req,res)
+})
+
+router.delete('/student/:id',async(req,res)=>{
+    controller.deleteOne(req,res)
+})
+
 
 module.exports = router
