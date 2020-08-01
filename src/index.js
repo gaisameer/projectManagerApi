@@ -5,7 +5,7 @@ const projRouter = require("./routers/projectRouter");
 const logRouter = require("./routers/logRouter");
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use(studRouter);
 app.use(guideRouter);
