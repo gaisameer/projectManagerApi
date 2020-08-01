@@ -25,13 +25,3 @@ router.delete("/project/:id", async (req, res) => {
 });
 
 module.exports = router;
-
-// {
-//     "projectName": "sampleproject8",
-//     "proDescription" :"simple project",
-//     "members":{
-//         "1":"akka",
-//         "2":"anujna"
-//     },
-//     "guide":"acdcc"
-// }
