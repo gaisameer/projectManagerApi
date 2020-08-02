@@ -30,7 +30,7 @@ const studSchema = new mongoose.Schema({
   },
 
   projects: {
-    type: String,
+    type: [String],
   },
 });
 

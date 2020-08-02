@@ -5,8 +5,8 @@ const Project = require("../models/project");
 
 const addProject = async (req, res) => {
   const project = new Project(req.body);
-  const members = Object.values(req.body.members);
-  project.members.value = members;
+  // const members = Object.values(req.body.members);
+  // project.members.value = members;
   try {
     await project.save();
     res.status(201).send(project);
@@ -61,14 +61,11 @@ const modify = async (req, res) => {
   try {
     const project = await Project.findById(req.params.id);
     updates.forEach((update) => {
-      console.log(1);
-      if (update === "members") {
-        project.members.value = Object.values(req.body.members);
-        console.log(2);
-      } else {
-        project[update] = req.body[update];
-        console.log(3);
-      }
+      // if (update === "members") {
+      //   project.members.value = Object.values(req.body.members);
+      // } else {
+      project[update] = req.body[update];
+      // }
     });
 
     if (!project) {
