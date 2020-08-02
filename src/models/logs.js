@@ -7,6 +7,10 @@ const logSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    projectId: {
+      type: String,
+      required: true,
+    },
 
     log: {
       type: String,

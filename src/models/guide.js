@@ -29,9 +29,6 @@ const guideSchema = new mongoose.Schema({
   },
 
   projects: {
-    // type: { type: String },
-    // value: [String],
-
     type: [String],
   },
 });
@@ -49,5 +46,4 @@ guideSchema.pre("save", async function (next) {
 guideSchema.plugin(uniqueValidator);
 
 const guide = mongoose.model("guide", guideSchema);
-// guideSchema.plugin(uniqueValidator);
 module.exports = guide;
