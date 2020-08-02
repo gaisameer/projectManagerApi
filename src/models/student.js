@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const uniqueValidator = require("mongoose-unique-validator");
 
 const studSchema = new mongoose.Schema({
   name: {
@@ -43,6 +44,7 @@ studSchema.pre("save", async function (next) {
   next();
 });
 
+studSchema.plugin(uniqueValidator);
 const student = mongoose.model("student", studSchema);
 
 module.exports = student;

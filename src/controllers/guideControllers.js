@@ -48,7 +48,7 @@ const deleteOne = async (req, res) => {
 };
 
 const modify = async (req, res) => {
-  const allowed = ["name", "registrationId", "dept", "password", "projects"];
+  const allowed = ["name", "email", "dept", "password", "projects"];
   const updates = Object.keys(req.body);
   console.log(updates);
   const isValid = updates.every((update) => {

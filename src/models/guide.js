@@ -1,11 +1,18 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const uniqueValidator = require("mongoose-unique-validator");
 
 const guideSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
     trim: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    trim: true,
+    unique: true,
   },
 
   dept: {
@@ -39,6 +46,8 @@ guideSchema.pre("save", async function (next) {
   next();
 });
 
-const guide = mongoose.model("guide", guideSchema);
+guideSchema.plugin(uniqueValidator);
 
+const guide = mongoose.model("guide", guideSchema);
+// guideSchema.plugin(uniqueValidator);
 module.exports = guide;

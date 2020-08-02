@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const uniqueValidator = require("mongoose-unique-validator");
+
 const projectSchema = new mongoose.Schema({
   projectName: {
     type: String,
@@ -23,6 +25,7 @@ const projectSchema = new mongoose.Schema({
   },
 });
 
+projectSchema.plugin(uniqueValidator);
 const project = new mongoose.model("project", projectSchema);
 
 module.exports = project;
